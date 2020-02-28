@@ -2,11 +2,13 @@ var mongoose = require('mongoose')
 mongoose.connect('mongodb://127.0.0.1:27017/MumbaiUniversity',{useNewUrlParser:true ,  useUnifiedTopology: true });
 
 const grievanceSchema=  mongoose.Schema({
+    title:String,
+    subtitle:String,
     from:String,    // This is email_id of Student who raises grievance
-    status:Number,  // Either 0/1  
-    message:String,  // This is message enclosed in grievance
+    status:Number,  // Either -1/0/1  
+    decription:String,  // This is message enclosed in grievance
     suggestion:Array,  // This is array of suggestion which comprises of comments by committee members
-    /*
+    /* 
         [{
             comment:String,
             by:String,        // mail id of committee member who comments
