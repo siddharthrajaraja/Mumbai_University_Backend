@@ -4,11 +4,10 @@ var bodyParser=require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // These are post Routes ------------------------------------------------
-var {register,login}=require('./Routes/postRoutes')
+var {register}=require('./Routes/postRoutes')
 
-app.post('/register',urlencodedParser,register)
+app.get('/register',urlencodedParser,register)
 
-app.post('/login',urlencodedParser,login)
 
 
 

@@ -1,7 +1,30 @@
-{
-    "name":"Siddharth Raja",
-    "email":"siddharthraja9849@gmail.com",
-    "mobile":7906861671,
-    "college":"Ramrao Adik Institute of Technology",
-    "documents":[]
-}
+[   {
+        "name":"Siddharth Raja",
+        "email":"siddharthraja9849@gmail.com",
+        "mobile":7906861671,
+        "college":"Ramrao Adik Institute of Technology",
+        "documents":[]
+    },
+    {
+        "name":"Aniruddha Velankar",
+        "email":"",
+        "mobile":7906861671,
+        "college":"Ramrao Adik Institute of Technology",
+        "documents":[]
+    },
+    {
+        "name":"Adwait ",
+        "email":"siddharthraja9849@gmail.com",
+        "mobile":7906861671,
+        "college":"Ramrao Adik Institute of Technology",
+        "documents":[]
+    },
+    {
+        "name":"Vinay",
+        "email":"siddharthraja9849@gmail.com",
+        "mobile":7906861671,
+        "college":"Ramrao Adik Institute of Technology",
+        "documents":[]
+    }
+
+]
