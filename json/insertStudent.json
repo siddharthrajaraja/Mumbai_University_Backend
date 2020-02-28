@@ -7,8 +7,8 @@
     },
     {
         "name":"Aniruddha Velankar",
-        "email":"",
-        "mobile":7906861671,
+        "email":"aniruddhav25@gmail.com",
+        "mobile":7276850336,
         "college":"Ramrao Adik Institute of Technology",
         "documents":[]
     },
@@ -23,6 +23,20 @@
         "name":"Vinay",
         "email":"siddharthraja9849@gmail.com",
         "mobile":7906861671,
+        "college":"Ramrao Adik Institute of Technology",
+        "documents":[]
+    }
+    {
+        "name":"Ranjeet",
+        "email":"patilranjeet3699@gmail.com",
+        "mobile":9082294174,
+        "college":"Ramrao Adik Institute of Technology",
+        "documents":[]
+    }
+    {
+        "name":"Nilesh",
+        "email":"nileshshirsath2389@gmail.com",
+        "mobile":9702705379,
         "college":"Ramrao Adik Institute of Technology",
         "documents":[]
     }
