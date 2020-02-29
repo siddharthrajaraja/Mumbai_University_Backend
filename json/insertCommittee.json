@@ -1,0 +1,19 @@
+[
+    {
+        "name":"Committe-1",
+        "email":"com1@gmail.com",
+        "password":"12345"   
+    }
+    ,
+    {
+        "name":"Committe-2",
+        "email":"com2@gmail.com",
+        "password":"abcdef"   
+    }
+    ,
+    {
+        "name":"Committe-3",
+        "email":"com3@gmail.com",
+        "password":"qwerty"   
+    }
+]
