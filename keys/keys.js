@@ -2,5 +2,11 @@ module.exports={
     mongodb:{
         "cloudURL":"mongodb+srv://university:university@cluster0-eakxp.mongodb.net/test?retryWrites=true&w=majority",
         "localURL":"mongodb://127.0.0.1:27017/MumbaiUniversity"
+    },
+    twilio:{
+        "SID":"AC6ea8cc47b311d4d4c0c16dc489fbe9cd",
+        "AUTH_TOKEN":"df7cf4d19bbf9f8fb619c0959634b4ac",
+        "API_SID":"SKcc0e20081173e57ed443f51044a9f189",
+        "SECRET":"Xj7hUPLnfJRDEUnjYIi7LBDTndOTLnXE"
     }
 }

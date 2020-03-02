@@ -29,20 +29,23 @@ const studentSchema = mongoose.Schema({
     college:String,
     rollNo:String,
     gender:String,
-    password:String
+    password:String,
+    type:String
 })
 
 const secretarySchema =mongoose.Schema({
     name:String,
     email:String,
     password:String,
-    mobile:Number
+    mobile:Number,
+    type:String
 })
 
 const committeeSchema =mongoose.Schema({
     name:String,
     email:String,
-    password:String    
+    password:String,
+    type: String 
 })
 
 

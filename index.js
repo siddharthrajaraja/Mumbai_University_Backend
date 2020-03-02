@@ -2,6 +2,8 @@ var  express=require('express')
 var app =express()
 var bodyParser=require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+const cors = require('cors')
+
 
 var session=require('express-session')
 var flash=require('connect-flash')
@@ -9,7 +11,7 @@ var passport = require('passport')
 , LocalStrategy = require('passport-local').Strategy;
 
 
-var {passportLocal}=require('./passport-config')
+var {passportLocal}=require('./Passport/passport-config')
 passportLocal(passport);
 
 
@@ -17,6 +19,7 @@ passportLocal(passport);
 
 app.set('view engine','ejs');
 app.use('/assets',express.static('assets'));
+app.use(cors())
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(session({
@@ -43,9 +46,11 @@ app.get('/done',done)
 
 
 // These are post Routes ------------------------------------------------
-var {register}=require('./Routes/postRoutes')
+var {register,logout}=require('./Routes/postRoutes')
 
 app.post('/register',urlencodedParser,register)
+
+app.post('/logout',logout)
 
 // app.post('/login', passport.authenticate('local-signup', {
 //     successRedirect : '/done', // redirect to the secure profile section
