@@ -71,5 +71,18 @@ app.post('/login',urlencodedParser,(req,res,next)=>{
 
 })
 
+
+//  This Code is for uploading file using Multer -----------------------------------------------+
+
+var {uploads}=require('./Multer/upload_file.js')
+
+app.post('/uploading_files',uploads.array('documents',10),(req,res,next)=>{
+    console.log(req.session['passport']['user']['email']+" ho gaya upload bc !!")
+    res.send("File Loaded successfully")
+
+})
+
+
+
 app.listen(process.env.PORT || 9900)
 

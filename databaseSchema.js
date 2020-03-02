@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 var keys=require("./keys/keys.js")
 //console.log(keys.mongodb.cloudURL)
 
-mongoose.connect(keys.mongodb.cloudURL,{useNewUrlParser:true ,  useUnifiedTopology: true });
+mongoose.connect(keys.mongodb.localURL,{useNewUrlParser:true ,  useUnifiedTopology: true });
 
 const grievanceSchema=  mongoose.Schema({
     title:String,

@@ -34,7 +34,7 @@ module.exports.register =(req,res)=>{
             req.body.type="student";
             studentModel.findOne({email:req.body.email},(err,data)=>{
                 if(err) throw err;
-                if(data==null){ studentModel(req.body).save(()=>{console.log("Object added");res.send("Aaa gaay bc");mail('darkp251099@gmail.com',req.body.email,'Verification','Click the given link to verify your email',`<a href='http://mugs-web-portal.herokuapp.com/login'>Click Here!</a>`)})}
+                if(data==null){ studentModel(req.body).save(()=>{console.log("Object added");res.send("Aaa gaay bc");mail('darkp251099@gmail.com',req.body.email,'Verification','Click the given link to verify your email',`<a href='http://localhost:9900/login'>Click Here!</a>`)})}
             else {console.log("invalid");res.send("Email ID already exists")}
             
             })
