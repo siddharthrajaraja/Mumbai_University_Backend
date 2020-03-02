@@ -10,10 +10,31 @@ module.exports.login=(req,res)=>{
     
 }
 
+module.exports.upload=(req,res)=> {
+    try{
+        
+        if(typeof(req.sessionID)!=undefined){
+            console.log("uploads mein hu", req.sessionID)
+            console.log("harami",req.session['passport'])
+            console.log("harami",req.session['passport']['user']['name'])
+            console.log("harami",req.session['passport']['user']['email'])
+            console.log("harami",req.session['passport']['user']['mobile'])
+            console.log("harami",req.session['passport']['user']['type'])
+           
+            res.render('upload')
+        
+        }
+    }
+    catch{
+        res.redirect('/login')
+    }
+}
+
 module.exports.done=(req,res)=>{
-    //console.log(req)
+    
     try{
 
+        console.log(req.cookies)
         console.log( Object.keys(req.session['passport']))
 
     console.log("harami",req.session['passport'])

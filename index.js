@@ -3,7 +3,7 @@ var app =express()
 var bodyParser=require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const cors = require('cors')
-
+var cookieParser=require('cookie-parser')
 
 var session=require('express-session')
 var flash=require('connect-flash')
@@ -13,6 +13,8 @@ var passport = require('passport')
 
 var {passportLocal}=require('./Passport/passport-config')
 passportLocal(passport);
+
+var cookieSession = require('cookie-session')
 
 
 // Middle-wares and Templating Engines --------------------------------
@@ -27,23 +29,22 @@ app.use(session({
     saveUninitialized:true,
     resave:true
 }))
+
 app.use(flash())
-
-
-
+app.use(cookieParser())
 
 
 
 
 // These are get Routes -------------------------------------------------
 
-var {register,login,readFile,done}=require('./Routes/getRoutes')
+var {register,login,readFile,done,upload}=require('./Routes/getRoutes')
 
 app.get('/register',register);
 app.get('/login',login)
 app.get('/readFile',readFile)
 app.get('/done',done)
-
+app.get('/upload',upload);
 
 // These are post Routes ------------------------------------------------
 var {register,logout}=require('./Routes/postRoutes')
