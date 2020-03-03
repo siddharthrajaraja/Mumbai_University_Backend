@@ -38,13 +38,14 @@ app.use(cookieParser())
 
 // These are get Routes -------------------------------------------------
 
-var {register,login,readFile,done,upload}=require('./Routes/getRoutes')
+var {register,login,readFile,done,upload,verify}=require('./Routes/getRoutes')
 
 app.get('/register',register);
 app.get('/login',login)
 app.get('/readFile',readFile)
 app.get('/done',done)
 app.get('/upload',upload);
+app.get('/verify/:id',verify);
 
 // These are post Routes ------------------------------------------------
 var {register,logout}=require('./Routes/postRoutes')
@@ -76,7 +77,39 @@ app.post('/login',urlencodedParser,(req,res,next)=>{
 
 var {uploads}=require('./Multer/upload_file.js')
 
-app.post('/uploading_files',uploads.array('documents',10),(req,res,next)=>{
+app.post('/grievance',uploads.array('documents',10), async (req,res,next)=>{
+    var fs=require('fs')
+    var {grievanceModel}=require('./databaseSchema')
+    var email_id=req.session['passport']['user']['email']
+       
+    grievanceModel.collection.countDocuments({from:email_id}, (err,count) => {
+        console.log(count)
+        var path="./Multer/uploads/"+req.session['passport']['user']['email'].split('@')[0]+'/grievance'+String(count+1);
+        console.log(path)
+        fs.readdir(path,(err,files) => {
+            var all_files_path=[]
+        
+            files.forEach(file =>{
+                all_files_path.push(path+'/'+file)
+            })
+            
+            var object={
+                title:req.body.title,
+                subtitle:req.body.subtitle,
+                from:email_id,
+                documents:all_files_path,
+                status:-1,
+                description:req.body.description,
+                timestamp:Date.now()
+
+            }
+            grievanceModel(object).save(()=>{console.log("Grievance added backchod");})
+            
+        })
+
+        
+    })
+
     console.log(req.session['passport']['user']['email']+" ho gaya upload bc !!")
     res.send("File Loaded successfully")
 

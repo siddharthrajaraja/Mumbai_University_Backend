@@ -34,7 +34,24 @@ module.exports.register =(req,res)=>{
             req.body.type="student";
             studentModel.findOne({email:req.body.email},(err,data)=>{
                 if(err) throw err;
-                if(data==null){ studentModel(req.body).save(()=>{console.log("Object added");res.send("Aaa gaay bc");mail('darkp251099@gmail.com',req.body.email,'Verification','Click the given link to verify your email',`<a href='http://localhost:9900/login'>Click Here!</a>`)})}
+                if(data==null){ 
+                    req.body['isVerified']=0
+                    console.log(req.body)
+                        
+                    studentModel(req.body).save(()=>{
+                        console.log("Object added");
+                        studentModel.find({email:req.body.email},(err,data)=>{
+                            if(err)throw err;
+                           var object_id=data[0]["_id"]
+                           console.log(object_id)
+                           path="http://localhost:9900/verify/"+object_id
+                           tag="<a href='"+path+"'>Click me </a>"
+                           mail('darkp251099@gmail.com',req.body.email,'Verification','Click the given link to verify your email',tag)
+                            
+                        })
+                        res.send("Aaa gaay bc");
+                        
+                    })}
             else {console.log("invalid");res.send("Email ID already exists")}
             
             })

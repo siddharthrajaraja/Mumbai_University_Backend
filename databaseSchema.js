@@ -10,7 +10,7 @@ const grievanceSchema=  mongoose.Schema({
     documents:Array,
     from:String,    // This is email_id of Student who raises grievance
     status:Number,  // Either -1/0/1  
-    decription:String,  // This is message enclosed in grievance
+    description:String,  // This is message enclosed in grievance
     suggestion:Array,  // This is array of suggestion which comprises of comments by committee members
     /* 
         [{
@@ -30,7 +30,8 @@ const studentSchema = mongoose.Schema({
     rollNo:String,
     gender:String,
     password:String,
-    type:String
+    type:String,
+    isVerified:Number
 })
 
 const secretarySchema =mongoose.Schema({

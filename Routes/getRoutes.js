@@ -1,4 +1,4 @@
-var {secretaryModel,committeeModel}=require('../databaseSchema.js')
+var {secretaryModel,committeeModel,studentModel}=require('../databaseSchema.js')
 
 module.exports.register=(req,res)=>{
         res.render('register')
@@ -9,7 +9,14 @@ module.exports.login=(req,res)=>{
     res.render('login')
     
 }
+module.exports.verify = (req, res ) => {
+    console.log("Aaa gaya mein hone verify: "+req.params.id)
 
+    studentModel.findByIdAndUpdate({"_id":req.params.id},{"isVerified":1},(err,data)=>{console.log("Verify ho gaya Laude")})
+    
+    res.send('Email-Id Verified');
+    
+}
 module.exports.upload=(req,res)=> {
     try{
         
