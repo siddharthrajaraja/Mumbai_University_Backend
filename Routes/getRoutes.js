@@ -58,7 +58,8 @@ module.exports.done=(req,res)=>{
     }
 
     else if (temp1=='committee'){
-        res.render('committee.ejs')
+       // res.render('committee.ejs')
+        res.redirect('/selected_grievances')
     }
 
     else {

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <%for(var i=0;i<array_of_selections.length;i++){ %>
+        <form action="/comment" method="POST">
+          <center>  <div class="card" width="50%" >
+                <%=array_of_selections[i]['_id']%>
+                    
+                <input type="text" name="<%=array_of_selections[i]['_id']%>" id="comments">
+                        <a href="/sel_griev/<%=array_of_selections[i]['_id']%>">Click to comments</a>      
+                <button type="submit" class="btn-floating red">OK</button>
+            </center>
+            </div>
+        </form>
+        
+        <%}%>
+    
+    <%-include('partials/materialize.ejs')%>
+</body>
+</html>

@@ -71,7 +71,7 @@ module.exports.passportLocal = function(passport) {
             else if (user !=null)
                 {
                     bcrypt.compare(req.body.password,user.password).then(result=>{
-                        console.log("Chuitiye,",result,user.password,req.body.password)
+                        console.log("secretary logged in,",result,user.password,req.body.password)
                         if(result==true) return done(null,user);
                         else return done(null,false)
                     })
@@ -87,7 +87,7 @@ module.exports.passportLocal = function(passport) {
                 return done(err);
             else if (user!=null){
                 bcrypt.compare(req.body.password,user.password).then(result=>{
-                    console.log("Chuitiye,",result,user.password,req.body.password)
+                    console.log("committe logged in,",result,user.password,req.body.password)
                     if(result==true) return done(null,user);
                     else return done(null,false)
                 })
@@ -105,7 +105,7 @@ module.exports.passportLocal = function(passport) {
             else if (user !=null){
 
                 bcrypt.compare(req.body.password,user.password).then(result=>{
-                    console.log("Chuitiye,",result,user.password,req.body.password)
+                    console.log("student logged in",result,user.password,req.body.password)
                     if(result==true) return done(null,user);
                     else return done(null,false)
                 })
