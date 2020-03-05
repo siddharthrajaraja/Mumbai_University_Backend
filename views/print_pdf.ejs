@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Pdf</title>
+</head>
+<body class="grey">
+
+    <div class="container white" style="background-color: wheat;">
+        <div class="brand-logo center" style="padding-top: 5rem;">
+            <img src="../assets/images/muLogo.png" >
+        </div>
+        <div class="date">
+            <b>Dated :</b> DD.MM.YYYY
+        </div>
+
+        
+        <div class="subject">
+            <b>Subject :</b> <u>  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem amet atque aliquam dolor ullam alias, enim dolo </u>
+
+        </div>
+        
+        <div class="salutation">
+             <b>Sir/Madame,</b> 
+        </div>
+
+        <div class="row main-body">
+            <p class="para1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis assumenda molestiae error natus laboriosam in velit iusto nihil explicabo dolore itaque totam numquam exercitationem repellat ab, possimus corporis, non ut?
+            </p>
+            
+            
+            <p class="para2">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab ut nulla illo maxime placeat incidunt consequatur repudiandae quam aut voluptas tempore soluta, dolor deleniti iure error quas blanditiis magni accusamus!
+            </p>
+
+            <p class="para3">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit consequatur sed deserunt perspiciatis. Consequuntur animi rerum, vitae unde dolores, eius quo non dolor earum ut facilis doloremque voluptatem recusandae exercitationem.
+            </p>
+            
+        </div>
+
+        <div class="salutation">
+            With regards,
+        </div>
+        
+
+        <div class="footer">
+                Signatures
+        </div>        
+
+
+
+    </div>
+    
+</body>
+    <%-include('partials/materialize.ejs')%>
+    <style>
+        .date{
+            margin-top: 2rem;
+            padding: 2rem;
+        }
+
+        .subject , .main-body , .salutation{
+            padding:2rem;
+        }
+
+        .footer{
+
+            bottom: 0;
+            padding:2rem;
+        }
+
+        
+    </style>
+
+</html>

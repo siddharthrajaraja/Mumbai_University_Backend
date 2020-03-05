@@ -3,7 +3,6 @@ const {grievanceModel,studentModel,secretaryModel,committeeModel}=require('../da
 //console.log(grievanceModel)
 var session=require('express-session')
 
-
 module.exports.logout=(req,res)=>{
     try{
         req.session.destroy(()=>{

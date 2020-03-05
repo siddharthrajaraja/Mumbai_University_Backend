@@ -29,10 +29,13 @@ module.exports.comment=async (req,res)=>{
                     else{
                         existed_suggestions.push(suggestion_object)
                     }
+
                     console.log(existed_suggestions)
                     
-                    grievanceModel.findOneAndUpdate({_id:id},{suggestion:existed_suggestions},()=>{console.log
-                    ("Added")})
+                    grievanceModel.findOneAndUpdate({_id:id},{suggestion:existed_suggestions , isComment:1},()=>{console.log
+                    ("Added")},
+                    
+                    )
 
 
                 })

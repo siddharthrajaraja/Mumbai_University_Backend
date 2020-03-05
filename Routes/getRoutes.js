@@ -52,9 +52,7 @@ module.exports.done=(req,res)=>{
     var temp1=req.session['passport']['user']['type']
 
     if(temp1=='secretary'){
-        res.render('secretary.ejs')
-    
-
+        res.redirect('/secretary/display')
     }
 
     else if (temp1=='committee'){
@@ -76,7 +74,14 @@ module.exports.done=(req,res)=>{
    
 }
 
-
+module.exports.print_pdf = (req, res ) => {
+    try{
+        res.render('print_pdf.ejs')
+    }
+    catch(err){
+        console.log(err)
+    }
+}
 
 
 module.exports.readFile =(req,res)=>{

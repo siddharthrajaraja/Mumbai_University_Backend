@@ -38,9 +38,10 @@ app.use(cookieParser())
 
 // These are get Routes -------------------------------------------------
 
-var {register,login,readFile,done,upload,verify}=require('./Routes/getRoutes')
+var {register,login,readFile,done,upload,verify,print_pdf}=require('./Routes/getRoutes')
 var {display}=require('./Routes/secretary/getRoutes')
 var {selected_grievances}=require('./Routes/committee/getRoutes')
+var {grievance_count}=require('./Routes/count/getRoutes')
 
 app.get('/register',register);
 app.get('/login',login)
@@ -48,17 +49,22 @@ app.get('/readFile',readFile)
 app.get('/done',done)
 app.get('/upload',upload);
 app.get('/verify/:id',verify);
-app.get('/display',display)
+app.get('/secretary/display',display)
 app.get('/sel_griev/:id',selected_grievances)
 app.get('/selected_grievances',selected_grievances)
+app.get('/grievance_count',grievance_count)
+app.get('/print_pdf/:id',print_pdf)
 
 
 
 // These are post Routes ------------------------------------------------
 var {register,logout}=require('./Routes/postRoutes')
 var {comment}=require('./Routes/committee/postRoutes')
+var {under_process,commit}=require('./Routes/secretary/postRoutes.js')
 
 
+app.post('/under_process/:id',urlencodedParser,under_process)
+app.post('/commit/:id',urlencodedParser,commit)
 app.post('/register',urlencodedParser,register)
 
 app.post('/logout',logout)
@@ -109,7 +115,7 @@ app.post('/grievance',uploads.array('documents',10), async (req,res,next)=>{
                 documents:all_files_path,
                 status:-1,
                 description:req.body.description,
-                timestamp: Math.floor( Date.now()/1000)
+                timestamp:  Date.now()
 
             }
             grievanceModel(object).save(()=>{console.log("Grievance added backchod");})

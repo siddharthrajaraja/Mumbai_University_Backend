@@ -19,7 +19,12 @@ const grievanceSchema=  mongoose.Schema({
             timestamp:Date
         },{},...]
     */
-    timestamp:Date
+    timestamp:Date,
+    isComment:{
+                type:Number,
+                default:0
+              },
+    date_of_resolving:Date
 })
 
 const studentSchema = mongoose.Schema({
