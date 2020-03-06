@@ -6,10 +6,11 @@ module.exports.display=async (req,res)=>{
         if(typeof(req.sessionID)!=undefined &&  req.session['passport']['user']['type']=="secretary")
         {
             var grievance_untouched=await grievanceModel.find({status:-1})
-            var grievance_under_process=await grievanceModel.find({status:0})
-            var grievance_recieved=await grievanceModel.find({isComment:1})
+            var grievance_under_process=await grievanceModel.find({status:0,isComment:0})
+            var grievance_recieved=await grievanceModel.find({status:0,isComment:1})
+            var grievance_resolved=await grievanceModel.find({status:1,isComment:1})
             var grievances=await grievanceModel.find({}).sort({'timestamp':1})
-            res.render('secretary.ejs',{array_of_selections:grievances,grievance_untouched,grievance_under_process,grievance_recieved})
+            res.render('secretary.ejs',{array_of_selections:grievances,grievance_untouched,grievance_under_process,grievance_recieved,grievance_resolved})
         
         }
     }

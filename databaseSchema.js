@@ -24,7 +24,14 @@ const grievanceSchema=  mongoose.Schema({
                 type:Number,
                 default:0
               },
-    date_of_resolving:Date
+    final_date_of_resolving:{
+        type:Date,
+        default:null,
+    },
+    finalDecision:{
+        type:String,
+        default:""
+    }
 })
 
 const studentSchema = mongoose.Schema({
