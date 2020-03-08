@@ -1,8 +1,7 @@
 var  express=require('express')
 var app =express()
-var bodyParser=require('body-parser')
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const cors = require('cors')
+var bodyParser = require('body-parser');
+var cors = require('cors')
 var cookieParser=require('cookie-parser')
 
 var session=require('express-session')
@@ -23,11 +22,14 @@ app.set('view engine','ejs');
 app.use('/assets',express.static('assets'));
 app.use(cors())
 app.use(passport.initialize())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.session())
 app.use(session({
     secret:"LAuda",
     saveUninitialized:true,
-    resave:true
+    resave:true,
+    
 }))
 
 app.use(flash())
@@ -59,10 +61,10 @@ var {register,logout}=require('./Routes/postRoutes')
 var {comment}=require('./Routes/committee/postRoutes')
 
 
-app.post('/register',urlencodedParser,register)
+app.post('/register',register)
 
 app.post('/logout',logout)
-app.post('/comment',urlencodedParser,comment)
+app.post('/comment',comment)
 // app.post('/login', passport.authenticate('local-signup', {
 //     successRedirect : '/done', // redirect to the secure profile section
 //     failureRedirect : '/login', // redirect back to the signup page if there is an error
@@ -70,17 +72,24 @@ app.post('/comment',urlencodedParser,comment)
 // })(req,res,next)
 
 // );
-
-app.post('/login',urlencodedParser,(req,res,next)=>{
+/*
+app.post('/login',(req,res,next)=>{
      passport.authenticate('local-signup',{
         successRedirect:'/done',
-
         failureRedirect : '/login', // redirect back to the signup page if there is an error
+        
         
     })(req,res,next)
 
-})
+})*/
 
+app.post('/login',
+  passport.authenticate('local-signup'),
+  function(req, res) {
+    var temp1=req.session['passport']['user']['type']
+        
+    res.json({token:req.sessionID,type:temp1});
+  });
 
 //  This Code is for uploading file using Multer -----------------------------------------------+
 
@@ -124,7 +133,4 @@ app.post('/grievance',uploads.array('documents',10), async (req,res,next)=>{
 
 })
 
-
-
 app.listen(process.env.PORT || 9900)
-

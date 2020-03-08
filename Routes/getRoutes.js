@@ -13,9 +13,8 @@ module.exports.verify = (req, res ) => {
     console.log("Aaa gaya mein hone verify: "+req.params.id)
 
     studentModel.findByIdAndUpdate({"_id":req.params.id},{"isVerified":1},(err,data)=>{console.log("Verify ho gaya Laude")})
-    
-    res.send('Email-Id Verified');
-    
+    // res.send('Email-Id Verified');
+    res.redirect('http://localhost:3000/login')
 }
 module.exports.upload=(req,res)=> {
     try{
@@ -41,8 +40,8 @@ module.exports.done=(req,res)=>{
     
     try{
 
-        console.log(req.cookies)
-        console.log( Object.keys(req.session['passport']))
+    console.log(req.cookies)
+    console.log(Object.keys(req.session['passport']))
 
     console.log("harami",req.session['passport'])
     console.log("harami",req.session['passport']['user']['name'])
@@ -52,18 +51,29 @@ module.exports.done=(req,res)=>{
     var temp1=req.session['passport']['user']['type']
 
     if(temp1=='secretary'){
-        res.render('secretary.ejs')
-    
+        //res.render('secretary.ejs')
+        res.json({
+            usertype:'secretary',
+            token:req.sessionID
+        })
 
     }
 
     else if (temp1=='committee'){
        // res.render('committee.ejs')
-        res.redirect('/selected_grievances')
+        // res.redirect('/selected_grievances')
+        res.json({
+            usertype:'committee',
+            token:req.sessionID
+        })
     }
 
     else {
-        res.render('student.ejs')
+        // res.render('student.ejs')
+        res.json({
+            usertype:'student',
+            token:req.sessionID
+        })
     }
     console.log( "Done mwin hu re " ,req.sessionID)
         //res.send("Done")

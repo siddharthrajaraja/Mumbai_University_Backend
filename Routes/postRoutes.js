@@ -49,15 +49,15 @@ module.exports.register =(req,res)=>{
                            mail('darkp251099@gmail.com',req.body.email,'Verification','Click the given link to verify your email',tag)
                             
                         })
-                        res.send("verification sent");
+                        res.send("verification sent"); 
                         
                     })}
             else {console.log("invalid");res.send("Email ID already exists")}
+
             
-            })
+            })//lets go to login
            
         })
     })
-
     
 }

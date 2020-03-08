@@ -6,7 +6,6 @@ mongoose.connect(keys.mongodb.localURL,{useNewUrlParser:true ,  useUnifiedTopolo
 
 const grievanceSchema=  mongoose.Schema({
     title:String,
-    subtitle:String,
     documents:Array,
     from:String,    // This is email_id of Student who raises grievance
     status:Number,  // Either -1/0/1  
